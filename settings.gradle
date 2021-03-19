@@ -1,0 +1,4 @@
+rootProject.name = 'developer-module'
+include 'developer-api'
+include 'developer-parent'
+
