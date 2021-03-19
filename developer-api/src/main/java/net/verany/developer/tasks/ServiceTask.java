@@ -15,7 +15,8 @@ public class ServiceTask {
 
     public enum TaskType {
         START,
-        STOP
+        STOP,
+        RESTART
     }
 
 }
