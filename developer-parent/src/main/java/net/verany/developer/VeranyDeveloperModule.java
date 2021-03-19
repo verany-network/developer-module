@@ -34,7 +34,7 @@ public class VeranyDeveloperModule extends VeranyProject {
 
     private void init() {
         Document testData = getConnection().getCollection("developers").find().first();
-        if(testData == null)
+        if (testData == null)
             getConnection().getCollection("developers").insertOne(new Gson().fromJson(new Gson().toJson(new DeveloperData("tylix", true, 1014, new ServiceData())), Document.class));
 
         Verany.addTask(new CheckTask(1000, this));
@@ -46,7 +46,14 @@ public class VeranyDeveloperModule extends VeranyProject {
     }
 
     public void runTask(DeveloperData data, ServiceTask task) {
-        switch (task.getTaskType()) {
+        executeTask(data, task.getTaskType());
+
+        data.getServiceData().getTasks().remove(task);
+        updateData(data);
+    }
+
+    private void executeTask(DeveloperData data, ServiceTask.TaskType taskType) {
+        switch (taskType) {
             case START: {
                 if (data.getServiceData().isOnline()) return;
                 ServiceInfoSnapshot serviceInfoSnapshot = CloudNetDriver.getInstance().getCloudServiceFactory().createCloudService(
@@ -75,12 +82,16 @@ public class VeranyDeveloperModule extends VeranyProject {
             case STOP: {
                 if (!data.getServiceData().isOnline()) return;
                 data.getServiceData().getInfoSnapshot().provider().stop();
+                data.getServiceData().setInfoSnapshot(null);
                 data.getServiceData().setOnline(false);
                 break;
             }
+            case RESTART: {
+                executeTask(data, ServiceTask.TaskType.STOP);
+                executeTask(data, ServiceTask.TaskType.START);
+                break;
+            }
         }
-        data.getServiceData().getTasks().remove(task);
-        updateData(data);
     }
 
     public void updateData(DeveloperData data) {
