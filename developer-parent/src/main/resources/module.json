@@ -1,0 +1,14 @@
+{
+  "group": "net.verany.developer",
+  "name": "Developer",
+  "version": "2021.3.1",
+  "author": "tylix",
+  "main": "net.verany.developer.CloudNetDeveloperModule",
+  "dependencies": [
+    {
+      "group": "de.dytanic.cloudnet.modules",
+      "name": "CloudNet-Bridge",
+      "version": "1.2"
+    }
+  ]
+}
