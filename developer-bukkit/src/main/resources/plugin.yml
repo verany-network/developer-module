@@ -1,0 +1,13 @@
+name: Developer-Core
+version: 2021.3.1
+main: net.verany.developer.Developer
+author: tylix
+api-version: 1.16
+
+loadBefore:
+  - MC-Core-Executor
+  - CloudNet-Bridge
+
+depend:
+  - MC-Core-Executor
+  - CloudNet-Bridge
