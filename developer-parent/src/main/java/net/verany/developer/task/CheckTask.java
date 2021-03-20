@@ -28,9 +28,6 @@ public class CheckTask extends AbstractTask {
                 ServiceTask task = serviceData.getTasks().get(i);
                 VeranyDeveloperModule.INSTANCE.runTask(data, task);
             }
-            /*for (ServiceTask task : serviceData.getTasks()) {
-                VeranyDeveloperModule.INSTANCE.runTask(data, task);
-            }*/
         }
     }
 }
