@@ -1,4 +1,5 @@
 developer-parent/build
 developer-api/build
+developer-bukkit/build
 .idea
 .gradle
