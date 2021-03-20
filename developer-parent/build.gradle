@@ -15,4 +15,5 @@ jar {
 
 dependencies {
     implementation project(":developer-api")
+    compile(files("C:/Users/maxim/Desktop/Verany Season 2/Spigot/VeranyCore-Addon/addon-parent/build/libs/addon-parent-0.6.8-DEV-SNAPSHOT.jar"))
 }
