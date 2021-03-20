@@ -5,15 +5,6 @@ plugins {
 group 'org.example'
 version '1.0-SNAPSHOT'
 
-repositories {
-    mavenCentral()
-}
-
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
-}
-
-test {
-    useJUnitPlatform()
+    compile(files("C:/Users/maxim/Desktop/Verany Season 2/Spigot/VeranyCore-Addon/addon-parent/build/libs/addon-parent-0.6.8-DEV-SNAPSHOT.jar"))
 }
