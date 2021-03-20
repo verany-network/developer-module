@@ -6,6 +6,7 @@ import de.dytanic.cloudnet.wrapper.Wrapper;
 import net.verany.api.Verany;
 import net.verany.api.module.VeranyModule;
 import net.verany.api.module.VeranyProject;
+import net.verany.developer.listener.CloudNetChannelListener;
 import net.verany.developer.tasks.UpdateTask;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -15,6 +16,8 @@ import java.util.UUID;
 public class Developer extends VeranyProject {
 
     public static Developer INSTANCE;
+
+    private long lastPlayerOnline = -1;
 
     @Override
     public void onEnable() {
@@ -29,7 +32,9 @@ public class Developer extends VeranyProject {
     public void init() {
         super.init();
 
-        if(!Wrapper.getInstance().getServiceId().getTaskName().equals("Hub")) {
+        CloudNetDriver.getInstance().getEventManager().registerListener(new CloudNetChannelListener());
+
+        if(getServiceProperties().contains("uuid")) {
             new BukkitRunnable() {
                 @Override
                 public void run() {
