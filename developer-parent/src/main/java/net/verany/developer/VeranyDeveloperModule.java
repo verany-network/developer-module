@@ -74,6 +74,7 @@ public class VeranyDeveloperModule extends VeranyProject {
                         null
                 );
                 serviceInfoSnapshot.provider().start();
+                CloudNetDriver.getInstance().getMessenger().sendChannelMessage("dev_module", "start", JsonDocument.newDocument().append("uuid", data.getUniqueId()));
                 data.getServiceData().setInfoSnapshot(serviceInfoSnapshot);
                 data.getServiceData().setStarting(true);
                 break;
