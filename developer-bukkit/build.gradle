@@ -2,17 +2,20 @@ plugins {
     id 'java'
 }
 
-version 'unspecified'
-
 repositories {
     mavenCentral()
 }
 
-dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+jar {
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    exclude("META-INF/*.SF", "META-INF/*.DSA", "META-INF/*.RSA")
 }
 
-test {
-    useJUnitPlatform()
+dependencies {
+    implementation project(":developer-api")
+    compileOnly files('C:/Users/maxim/Desktop/Verany Season 2/Spigot/1.16.4/Paper-Server/target/paper-1.16.4.jar')
+    compileOnly files("C:/Users/maxim/Desktop/Verany Season 2/Spigot/VeranyCore-Addon/addon-parent-mc/build/libs/addon-parent-mc-2021.3.1.jar")
+    compileOnly 'org.projectlombok:lombok:1.18.10'
 }
