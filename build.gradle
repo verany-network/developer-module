@@ -29,6 +29,5 @@ subprojects {
         annotationProcessor 'org.projectlombok:lombok:1.18.10'
         compile 'org.ocpsoft.prettytime:prettytime:4.0.5.Final'
         compileOnly 'de.dytanic.cloudnet:cloudnet:' + cnVersion
-        compile(files("C:/Users/maxim/Desktop/Verany Season 2/Spigot/VeranyCore-Addon/addon-parent/build/libs/addon-parent-0.6.8-DEV-SNAPSHOT.jar"))
     }
 }
