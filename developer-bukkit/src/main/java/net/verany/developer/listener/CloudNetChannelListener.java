@@ -5,7 +5,11 @@ import de.dytanic.cloudnet.driver.event.events.channel.ChannelMessageReceiveEven
 import de.dytanic.cloudnet.driver.event.events.service.CloudServiceStartEvent;
 import de.dytanic.cloudnet.driver.event.events.service.CloudServiceStopEvent;
 import de.dytanic.cloudnet.wrapper.Wrapper;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.HoverEvent;
 import net.verany.api.Verany;
+import net.verany.api.message.AbstractComponentBuilder;
 import net.verany.api.placeholder.Placeholder;
 import net.verany.api.player.IPlayerInfo;
 import org.bukkit.Bukkit;
@@ -46,6 +50,27 @@ public class CloudNetChannelListener {
                     Player player = Bukkit.getPlayer(dev);
                     if (player == null) return;
                     player.sendMessage("Your server will now start.");
+                } else if (event.getMessage().equals("offline")) {
+                    UUID dev = event.getData().get("uuid", UUID.class);
+                    Player player = Bukkit.getPlayer(dev);
+                    if (player == null) return;
+                    player.sendMessage("Your server has been stopped.");
+                }
+                break;
+            }
+            case "dev_server": {
+                if (event.getMessage().equals("online")) {
+                    UUID dev = event.getData().get("uuid", UUID.class);
+                    Player player = Bukkit.getPlayer(dev);
+                    if (player == null) return;
+                    player.sendMessage("Your server is now online.");
+                    Verany.getPlayer(player).sendMessage(new AbstractComponentBuilder("Click here to connect") {
+                        @Override
+                        public void onCreate() {
+                            setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/dev"));
+                            setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("Click to connect to your server").create()));
+                        }
+                    });
                 }
                 break;
             }
