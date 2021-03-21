@@ -31,17 +31,17 @@ public class DeveloperSetup {
         );
         animation.addEntry(new QuestionListEntry<>(
                 "name",
-                "Please enter the name of the developer",
+                "Please enter the name for the developer",
                 new QuestionAnswerTypeString()
         ));
         animation.addEntry(new QuestionListEntry<>(
                 "memory",
-                "Please enter the current memory of the developer",
+                "Please enter the current memory for the developer",
                 new QuestionAnswerTypeInt()
         ));
         animation.addEntry(new QuestionListEntry<>(
                 "max-memory",
-                "Please enter the max memory of the developer",
+                "Please enter the max memory for the developer",
                 new QuestionAnswerTypeInt()
         ));
         animation.addFinishHandler(() -> {
