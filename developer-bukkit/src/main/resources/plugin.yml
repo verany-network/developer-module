@@ -4,6 +4,9 @@ main: net.verany.developer.Developer
 author: tylix
 api-version: 1.16
 
+commands:
+  dev:
+
 loadBefore:
   - MC-Core-Executor
   - CloudNet-Bridge
