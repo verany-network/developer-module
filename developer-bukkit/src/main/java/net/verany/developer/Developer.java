@@ -19,7 +19,7 @@ import java.util.UUID;
 
 @Getter
 @Setter
-@VeranyModule(name = "Developer", maxRounds = -1, prefix = "", version = "2021.3.1", authors = {"tylix"}, user = "tylix", host = "159.69.63.105", password = "RxNqA18HB56SS7GW", databases = {"developer", "network"})
+@VeranyModule(name = "Developer", prefix = "", version = "2021.3.1", authors = {"tylix"}, user = "tylix", host = "159.69.63.105", password = "RxNqA18HB56SS7GW", databases = {"developer", "network"})
 public class Developer extends VeranyProject {
 
     public static Developer INSTANCE;
