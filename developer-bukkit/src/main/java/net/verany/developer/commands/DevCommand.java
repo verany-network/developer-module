@@ -34,7 +34,10 @@ public class DevCommand implements CommandExecutor {
 
         if (strings.length == 0) {
             ServiceInfoSnapshot serviceInfoSnapshot = CloudNetDriver.getInstance().getCloudServiceProvider().getCloudServiceByName(player.getName() + "-1");
-            if (serviceInfoSnapshot == null) return false;
+            if (serviceInfoSnapshot == null) {
+                player.sendMessage("You currently don't have a service!");
+                return false;
+            }
             if (isMultiRoundServer(serviceInfoSnapshot)) {
                 String roundData = serviceInfoSnapshot.getProperties().getString("round_data");
                 List<Document> documents = Verany.GSON.fromJson(roundData, ServerRoundData.class).getDocuments();
