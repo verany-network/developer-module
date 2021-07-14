@@ -1,5 +1,0 @@
-rootProject.name = 'developer-module'
-include 'developer-api'
-include 'developer-parent'
-include 'developer-bukkit'
-
