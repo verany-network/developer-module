@@ -1,5 +1,14 @@
+# Project exclude paths
+gradlew.bat
+gradlew
+/gradle
+.gradle
+gradle
+.idea
+.vscode
+.temp
+node_modules
+settings
 developer-parent/build
 developer-api/build
 developer-bukkit/build
-.idea
-.gradle
